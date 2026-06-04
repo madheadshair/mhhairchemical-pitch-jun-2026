@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madheads Hair Chemical Pvt Ltd - Interactive SPA</title>
     
-    <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS & FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Chart.js for real-time visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
@@ -52,14 +49,13 @@
         }
     </script>
     <style>
-        /* Hide default scrollbar for Presentation mode */
-        .presentation-mode::-webkit-scrollbar {
+        /* Hide default scrollbar for Presentation mode internal sliders on small viewports */
+        .slide::-webkit-scrollbar {
             display: none;
         }
-        .presentation-mode {
+        .slide {
             -ms-overflow-style: none;
             scrollbar-width: none;
-            overflow: hidden;
         }
         
         /* Custom slide transitions */
@@ -74,14 +70,14 @@
             height: 100vh !important;
             max-width: none !important;
             max-height: none !important;
-            padding: 2rem 4rem !important; /* Reduced Padding */
+            padding: 2rem 4rem !important; 
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         #slidesCanvasContainer:fullscreen #slidesMainContainer {
-            height: 88vh !important; /* Increased space fill up from 80% to fill more viewport height */
+            height: 88vh !important; 
             border: 1px solid rgba(0,0,0,0.08) !important;
             background-color: rgba(255, 255, 255, 0.99) !important;
             border-radius: 1.5rem;
@@ -89,7 +85,8 @@
         }
 
         #slidesCanvasContainer:fullscreen .slide {
-            padding: 3rem 4rem !important; /* Reduced Padding */
+            padding: 3rem 4rem !important; 
+            overflow: hidden !important;
         }
 
         #slidesCanvasContainer:fullscreen h2 {
@@ -111,57 +108,25 @@
         }
 
         /* Scale up typography, cards and elements in Fullscreen Mode */
-        #slidesCanvasContainer:fullscreen h3 {
-            font-size: 3rem !important;
-            line-height: 1.25 !important;
-        }
-        #slidesCanvasContainer:fullscreen h4 {
-            font-size: 1.75rem !important;
-        }
+        #slidesCanvasContainer:fullscreen h3 { font-size: 3rem !important; line-height: 1.25 !important; }
+        #slidesCanvasContainer:fullscreen h4 { font-size: 1.75rem !important; }
         #slidesCanvasContainer:fullscreen li, 
         #slidesCanvasContainer:fullscreen td, 
         #slidesCanvasContainer:fullscreen th,
-        #slidesCanvasContainer:fullscreen label {
-            font-size: 1.25rem !important;
-            line-height: 1.75 !important;
-        }
+        #slidesCanvasContainer:fullscreen label { font-size: 1.25rem !important; line-height: 1.75 !important; }
         #slidesCanvasContainer:fullscreen select,
         #slidesCanvasContainer:fullscreen input,
-        #slidesCanvasContainer:fullscreen option {
-            font-size: 1.15rem !important;
-            padding-top: 0.75rem !important;
-            padding-bottom: 0.75rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-xs {
-            font-size: 0.95rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-sm {
-            font-size: 1.15rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-base {
-            font-size: 1.35rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-lg {
-            font-size: 1.5rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-xl {
-            font-size: 1.85rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-2xl {
-            font-size: 2.5rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-3xl {
-            font-size: 3.25rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-4xl {
-            font-size: 4rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-5xl {
-            font-size: 4.75rem !important;
-        }
-        #slidesCanvasContainer:fullscreen .text-6xl {
-            font-size: 5.5rem !important;
-        }
+        #slidesCanvasContainer:fullscreen option { font-size: 1.15rem !important; padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+        #slidesCanvasContainer:fullscreen .text-xs { font-size: 0.95rem !important; }
+        #slidesCanvasContainer:fullscreen .text-sm { font-size: 1.15rem !important; }
+        #slidesCanvasContainer:fullscreen .text-base { font-size: 1.35rem !important; }
+        #slidesCanvasContainer:fullscreen .text-lg { font-size: 1.5rem !important; }
+        #slidesCanvasContainer:fullscreen .text-xl { font-size: 1.85rem !important; }
+        #slidesCanvasContainer:fullscreen .text-2xl { font-size: 2.5rem !important; }
+        #slidesCanvasContainer:fullscreen .text-3xl { font-size: 3.25rem !important; }
+        #slidesCanvasContainer:fullscreen .text-4xl { font-size: 4rem !important; }
+        #slidesCanvasContainer:fullscreen .text-5xl { font-size: 4.75rem !important; }
+        #slidesCanvasContainer:fullscreen .text-6xl { font-size: 5.5rem !important; }
         #slidesCanvasContainer:fullscreen .w-24 { width: 8rem !important; height: 8rem !important; }
         #slidesCanvasContainer:fullscreen .h-24 { width: 8rem !important; height: 8rem !important; }
         #slidesCanvasContainer:fullscreen .w-48 { width: 15rem !important; height: 15rem !important; }
@@ -179,40 +144,32 @@
 </head>
 <body class="bg-gradient-to-tr from-[#fffaf5] via-[#fff5ee] to-[#ffebd8] text-slate-800 font-sans min-h-screen relative overflow-x-hidden z-0">
 
-    <!-- Ambient Grid Background -->
     <div class="absolute inset-0 bg-[radial-gradient(#ffddc6_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none z-0"></div>
 
-    <!-- Floating Bubble Backdrop Decoration -->
     <div class="absolute top-10 right-10 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none animate-pulse-slow z-0"></div>
     <div class="absolute bottom-20 left-10 w-80 h-80 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none animate-float-slow z-0"></div>
 
-    <!-- Main Navigation Bar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200 px-6 py-4 shadow-sm">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-4 shadow-sm">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Brand Logo -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="goToSlide(0)">
-                <div class="w-10 h-10 rounded-xl bg-brand-navy flex items-center justify-center font-display font-extrabold text-brand-accent shadow-lg text-lg">MH</div>
+                <div class="w-10 h-10 rounded-xl bg-brand-navy flex items-center justify-center font-display font-extrabold text-brand-accent shadow-lg text-lg flex-shrink-0">MH</div>
                 <div>
-                    <h1 class="font-display font-bold text-lg leading-tight tracking-wide text-brand-navy">MADHEADS</h1>
-                    <p class="text-xs text-brand-accent font-semibold uppercase tracking-widest">Hair Chemical</p>
+                    <h1 class="font-display font-bold text-sm sm:text-lg leading-tight tracking-wide text-brand-navy">MADHEADS</h1>
+                    <p class="text-[10px] text-brand-accent font-semibold uppercase tracking-widest">Hair Chemical</p>
                 </div>
             </div>
 
-            <!-- Global Mode & Control Center -->
-            <div class="flex items-center space-x-4">
-                <!-- Fullscreen Button -->
-                <button onclick="toggleFullScreen()" class="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-semibold text-brand-navy flex items-center space-x-2 transition duration-300" title="Immersive laptop fullscreen mode">
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button onclick="toggleFullScreen()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-semibold text-brand-navy flex items-center space-x-1.5 transition duration-300" title="Immersive laptop fullscreen mode">
                     <i class="fa-solid fa-expand text-brand-accent"></i>
-                    <span>Fullscreen</span>
+                    <span class="hidden sm:inline">Fullscreen</span>
                 </button>
 
-                <!-- Mode Toggle (Slide presentation vs. Classic dashboard layout) -->
-                <button id="viewModeBtn" onclick="toggleViewMode()" class="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-semibold text-brand-navy flex items-center space-x-2 transition duration-300">
+                <button id="viewModeBtn" onclick="toggleViewMode()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-semibold text-brand-navy flex items-center space-x-1.5 transition duration-300">
                     <i class="fa-solid fa-layer-group text-brand-accent" id="modeIcon"></i>
-                    <span id="modeText">Switch to Dashboard Mode</span>
+                    <span id="modeText" class="hidden sm:inline">Switch to Dashboard Mode</span>
                 </button>
 
-                <!-- Help Button -->
                 <button onclick="toggleQuickTour()" class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-600 transition" title="Show Keyboard/Gestures Guide">
                     <i class="fa-solid fa-circle-question"></i>
                 </button>
@@ -220,659 +177,591 @@
         </div>
     </header>
 
-    <!-- Presentation View Mode (Slide Deck) -->
-    <main id="presentationContainer" class="relative w-full h-[95vh] flex items-center justify-center pt-24 pb-12 z-10 transition-opacity duration-300">
+    <main id="presentationContainer" class="relative w-full min-h-[100dvh] flex items-center justify-center pt-24 pb-20 z-10 transition-opacity duration-300 px-2 sm:px-6">
         
-        <!-- Active Slide Canvas (Reduced padding, optimized layout aspect-ratio for filling screen) -->
-        <div id="slidesCanvasContainer" class="w-full max-w-7xl h-[84vh] min-h-[580px] max-h-[820px] mx-auto px-6 relative">
+        <div id="slidesCanvasContainer" class="w-full max-w-7xl h-[78vh] md:h-[84vh] min-h-[500px] md:min-h-[580px] max-h-[820px] mx-auto relative">
             
-            <!-- Slides Container with structural transition wrapper -->
             <div id="slidesMainContainer" class="relative w-full h-full overflow-hidden rounded-2xl bg-white/95 border border-slate-200 shadow-2xl backdrop-blur-sm">
                 
-                <!-- Slide 1: Welcome Hero Title -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-100 z-10 transition-all duration-700 transform translate-x-0">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Company Brief</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-100 z-10 transition-all duration-700 transform translate-x-0">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Company Brief</span>
                         <span class="text-xs text-slate-500">01 / 10</span>
                     </div>
-                    <!-- Aligned and enlarged layout filling up roughly 80% space -->
-                    <div class="my-auto max-w-[85%] mx-auto text-left">
-                        <div class="inline-block py-1 px-3 bg-brand-accent/10 text-brand-accent font-semibold text-xs uppercase tracking-widest rounded-md mb-6">India's First Indigenous R&D</div>
-                        <h2 class="font-display font-extrabold text-5xl md:text-7xl text-brand-navy tracking-tight leading-tight">
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto text-left py-2">
+                        <div class="inline-block py-1 px-3 bg-brand-accent/10 text-brand-accent font-semibold text-[10px] sm:text-xs uppercase tracking-widest rounded-md mb-4 md:mb-6">India's First Indigenous R&D</div>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-5xl md:text-7xl text-brand-navy tracking-tight leading-tight">
                             Innovating <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-emerald-600">Medical-Grade</span> Adhesives & Hair Science
                         </h2>
-                        <p class="mt-8 text-slate-700 text-xl md:text-2xl leading-relaxed">
+                        <p class="mt-4 md:mt-8 text-slate-700 text-sm sm:text-xl md:text-2xl leading-relaxed">
                             Pioneering scalable, climate-resilient hair bonding and medical adhesives through advanced biotechnology. Replacing costly imports under India's <span class="text-brand-accent font-semibold">Make-in-India</span> framework.
                         </p>
-                        <div class="mt-10 flex flex-wrap gap-4">
-                            <button onclick="goToSlide(1)" class="px-8 py-4 rounded-lg bg-brand-navy hover:bg-slate-900 text-white font-bold transition text-sm shadow-md">
+                        <div class="mt-6 md:mt-10 flex flex-wrap gap-4">
+                            <button onclick="goToSlide(1)" class="px-6 py-3 md:px-8 md:py-4 rounded-lg bg-brand-navy hover:bg-slate-900 text-white font-bold transition text-xs sm:text-sm shadow-md">
                                 View Agenda
                             </button>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Madheads Hair Chemical Pvt Ltd</div>
                         <div>Proprietary Information</div>
                     </div>
                 </div>
 
-                <!-- Slide 2: Interactive Agenda Dashboard -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Navigation</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Navigation</span>
                         <span class="text-xs text-slate-500">02 / 10</span>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto">
-                        <h3 class="font-display font-bold text-4xl text-brand-navy mb-2">Interactive Index</h3>
-                        <p class="text-slate-600 text-lg mb-10 max-w-2xl">Jump instantly to any section of our business model and strategic blueprint.</p>
+                    <div class="my-auto w-full max-w-[95%] md:max-w-[85%] mx-auto py-2">
+                        <h3 class="font-display font-bold text-2xl sm:text-4xl text-brand-navy mb-1">Interactive Index</h3>
+                        <p class="text-slate-600 text-xs sm:text-lg mb-4 md:mb-10 max-w-2xl">Jump instantly to any section of our business model and strategic blueprint.</p>
                         
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            <!-- Clickable Agenda Items Sequential 1-8 -->
-                            <button onclick="goToSlide(2)" class="p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
-                                <span class="block text-brand-accent font-bold text-2xl mb-1 group-hover:scale-105 transition duration-300">01</span>
-                                <span class="font-semibold text-brand-navy block text-base">About Us</span>
-                                <span class="text-xs text-brand-textMuted block mt-1">Founder journey & mission</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+                            <button onclick="goToSlide(2)" class="p-3 md:p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
+                                <span class="block text-brand-accent font-bold text-xl md:text-2xl mb-1 group-hover:scale-105 transition duration-300">01</span>
+                                <span class="font-semibold text-brand-navy block text-xs md:text-base">About Us</span>
+                                <span class="hidden sm:block text-[11px] md:text-xs text-brand-textMuted mt-1">Founder journey & mission</span>
                             </button>
-                            <button onclick="goToSlide(3)" class="p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
-                                <span class="block text-brand-accent font-bold text-2xl mb-1 group-hover:scale-105 transition duration-300">02</span>
-                                <span class="font-semibold text-brand-navy block text-base">Vision & Mission</span>
-                                <span class="text-xs text-brand-textMuted block mt-1">Strategic directives</span>
+                            <button onclick="goToSlide(3)" class="p-3 md:p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
+                                <span class="block text-brand-accent font-bold text-xl md:text-2xl mb-1 group-hover:scale-105 transition duration-300">02</span>
+                                <span class="font-semibold text-brand-navy block text-xs md:text-base">Vision & Mission</span>
+                                <span class="hidden sm:block text-[11px] md:text-xs text-brand-textMuted mt-1">Strategic directives</span>
                             </button>
-                            <button onclick="goToSlide(4)" class="p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
-                                <span class="block text-brand-accent font-bold text-2xl mb-1 group-hover:scale-105 transition duration-300">03</span>
-                                <span class="font-semibold text-brand-navy block text-base">The Problem</span>
-                                <span class="text-xs text-brand-textMuted block mt-1">Industry scale paint points</span>
+                            <button onclick="goToSlide(4)" class="p-3 md:p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
+                                <span class="block text-brand-accent font-bold text-xl md:text-2xl mb-1 group-hover:scale-105 transition duration-300">03</span>
+                                <span class="font-semibold text-brand-navy block text-xs md:text-base">The Problem</span>
+                                <span class="hidden sm:block text-[11px] md:text-xs text-brand-textMuted mt-1">Industry scale paint points</span>
                             </button>
-                            <button onclick="goToSlide(5)" class="p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
-                                <span class="block text-brand-accent font-bold text-2xl mb-1 group-hover:scale-105 transition duration-300">04</span>
-                                <span class="font-semibold text-brand-navy block text-base">Market Potential</span>
-                                <span class="text-xs text-brand-textMuted block mt-1">Growth projection modeler</span>
+                            <button onclick="goToSlide(5)" class="p-3 md:p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
+                                <span class="block text-brand-accent font-bold text-xl md:text-2xl mb-1 group-hover:scale-105 transition duration-300">04</span>
+                                <span class="font-semibold text-brand-navy block text-xs md:text-base">Market Potential</span>
+                                <span class="hidden sm:block text-[11px] md:text-xs text-brand-textMuted mt-1">Growth projection modeler</span>
                             </button>
-                            <button onclick="goToSlide(6)" class="p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
-                                <span class="block text-brand-accent font-bold text-2xl mb-1 group-hover:scale-105 transition duration-300">05</span>
-                                <span class="font-semibold text-brand-navy block text-base">Our Solution</span>
-                                <span class="text-xs text-brand-textMuted block mt-1">Advanced adhesive chemistry</span>
+                            <button onclick="goToSlide(6)" class="p-3 md:p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
+                                <span class="block text-brand-accent font-bold text-xl md:text-2xl mb-1 group-hover:scale-105 transition duration-300">05</span>
+                                <span class="font-semibold text-brand-navy block text-xs md:text-base">Our Solution</span>
+                                <span class="hidden sm:block text-[11px] md:text-xs text-brand-textMuted mt-1">Advanced adhesive chemistry</span>
                             </button>
-                            <button onclick="goToSlide(7)" class="p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
-                                <span class="block text-brand-accent font-bold text-2xl mb-1 group-hover:scale-105 transition duration-300">06</span>
-                                <span class="font-semibold text-brand-navy block text-base">Business Model</span>
-                                <span class="text-xs text-brand-textMuted block mt-1">B2B, B2C, & private labeling</span>
+                            <button onclick="goToSlide(7)" class="p-3 md:p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
+                                <span class="block text-brand-accent font-bold text-xl md:text-2xl mb-1 group-hover:scale-105 transition duration-300">06</span>
+                                <span class="font-semibold text-brand-navy block text-xs md:text-base">Business Model</span>
+                                <span class="hidden sm:block text-[11px] md:text-xs text-brand-textMuted mt-1">B2B, B2C, & private labeling</span>
                             </button>
-                            <button onclick="goToSlide(8)" class="p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
-                                <span class="block text-brand-accent font-bold text-2xl mb-1 group-hover:scale-105 transition duration-300">07</span>
-                                <span class="font-semibold text-brand-navy block text-base">Roadmap & Milestones</span>
-                                <span class="text-xs text-brand-textMuted block mt-1">Active Trials Timeline</span>
+                            <button onclick="goToSlide(8)" class="p-3 md:p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
+                                <span class="block text-brand-accent font-bold text-xl md:text-2xl mb-1 group-hover:scale-105 transition duration-300">07</span>
+                                <span class="font-semibold text-brand-navy block text-xs md:text-base">Roadmap</span>
+                                <span class="hidden sm:block text-[11px] md:text-xs text-brand-textMuted mt-1">Active Trials Timeline</span>
                             </button>
-                            <button onclick="goToSlide(9)" class="p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
-                                <span class="block text-brand-accent font-bold text-2xl mb-1 group-hover:scale-105 transition duration-300">08</span>
-                                <span class="font-semibold text-brand-navy block text-base">Contact Portal</span>
-                                <span class="text-xs text-brand-textMuted block mt-1">Request technical documents</span>
+                            <button onclick="goToSlide(9)" class="p-3 md:p-5 bg-slate-50 hover:bg-brand-accent/10 border border-slate-200 hover:border-brand-accent/35 rounded-xl text-left transition group">
+                                <span class="block text-brand-accent font-bold text-xl md:text-2xl mb-1 group-hover:scale-105 transition duration-300">08</span>
+                                <span class="font-semibold text-brand-navy block text-xs md:text-base">Contact Portal</span>
+                                <span class="hidden sm:block text-[11px] md:text-xs text-brand-textMuted mt-1">Request technical documents</span>
                             </button>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Agenda Overview</div>
-                        <div>Use Left/Right Keyboard keys to move</div>
+                        <div class="hidden md:block">Use Left/Right Keyboard keys to move</div>
                     </div>
                 </div>
 
-                <!-- Slide 3: About Us - Founder & Ecosystem -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Company Legacy</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Company Legacy</span>
                         <div class="flex items-center space-x-4">
                             <button onclick="goToSlide(1)" class="text-xs font-bold text-brand-navy hover:text-brand-accent transition flex items-center space-x-1">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span>Back to Index</span>
+                                <span class="hidden sm:inline">Index</span>
                             </button>
                             <span class="text-xs text-slate-500">03 / 10</span>
                         </div>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <div class="space-y-4">
-                            <div class="text-brand-accent font-bold text-base tracking-widest uppercase mb-1">A Decade of Trust</div>
-                            <h3 class="font-display font-bold text-4xl text-brand-navy mb-4">Founder Journey & Legacy</h3>
-                            <p class="text-slate-700 text-base md:text-lg leading-relaxed mb-4 font-sans">
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center py-2">
+                        <div class="space-y-3">
+                            <div class="text-brand-accent font-bold text-xs md:text-base tracking-widest uppercase">A Decade of Trust</div>
+                            <h3 class="font-display font-bold text-2xl md:text-4xl text-brand-navy">Founder Journey & Legacy</h3>
+                            <p class="text-slate-700 text-xs sm:text-base md:text-lg leading-relaxed font-sans">
                                 Established by <strong class="text-brand-navy font-semibold">Amit Sharma</strong>, our journey began over ten years ago with non-surgical hair replacement studio systems, laying deep foundational expertise in scalp health.
                             </p>
-                            <p class="text-slate-700 text-base md:text-lg leading-relaxed font-sans">
+                            <p class="text-slate-700 text-xs sm:text-base leading-relaxed font-sans hidden sm:block">
                                 Realizing that existing solutions rely completely on expensive, reactive imports, we established Madheads Hair Chemical to build scientific, climate-ready alternatives locally.
                             </p>
-                            <div class="mt-8 flex space-x-12">
-                                <div class="border-l-4 border-brand-accent pl-4">
-                                    <span class="block text-brand-navy text-3xl font-bold">10+</span>
-                                    <span class="text-xs text-brand-textMuted">Years of Studio Expertise</span>
+                            <div class="flex space-x-6 md:space-x-12 pt-2">
+                                <div class="border-l-4 border-brand-accent pl-3">
+                                    <span class="block text-brand-navy text-xl md:text-3xl font-bold">10+</span>
+                                    <span class="text-[10px] sm:text-xs text-brand-textMuted">Years Studio Exp</span>
                                 </div>
-                                <div class="border-l-4 border-brand-accent pl-4">
-                                    <span class="block text-brand-navy text-3xl font-bold">1st</span>
-                                    <span class="text-xs text-brand-textMuted">Indian Medical-Grade Developer</span>
+                                <div class="border-l-4 border-brand-accent pl-3">
+                                    <span class="block text-brand-navy text-xl md:text-3xl font-bold">1st</span>
+                                    <span class="text-[10px] sm:text-xs text-brand-textMuted">Indian Developer</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="relative bg-slate-50 p-8 rounded-2xl border border-slate-200 flex flex-col justify-center items-center shadow-sm">
-                            <!-- Amit Sharma Photo Integration (Increased dimensions, layered fallback setup) -->
-                            <div class="w-48 h-48 rounded-full border-4 border-brand-accent bg-slate-200 flex items-center justify-center mb-6 overflow-hidden shadow-lg relative">
-                                <img src="AmitSharma.png" alt="Amit Sharma" class="w-full h-full object-cover z-10 relative" onerror="handleImageError(this)">
+                        <div class="bg-slate-50 p-4 md:p-8 rounded-2xl border border-slate-200 flex flex-col justify-center items-center shadow-sm">
+                            <div class="w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 rounded-full border-4 border-brand-accent bg-slate-200 flex items-center justify-center mb-4 overflow-hidden shadow-md relative">
+                                <img src="profile.png" alt="Amit Sharma" class="w-full h-full object-cover z-10 relative" onerror="handleImageError(this)">
                                 <div id="avatarFallback" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-navy text-brand-accent z-0">
-                                    <i class="fa-solid fa-user-tie text-5xl"></i>
-                                    <span class="text-[10px] uppercase font-bold tracking-widest mt-2">Amit Sharma</span>
+                                    <i class="fa-solid fa-user-tie text-3xl md:text-5xl"></i>
+                                    <span class="text-[8px] uppercase font-bold tracking-widest mt-1">Amit Sharma</span>
                                 </div>
                             </div>
-                            <h4 class="font-display font-bold text-brand-navy text-xl">Amit Sharma</h4>
-                            <p class="text-brand-accent text-sm font-semibold uppercase tracking-wider">Managing Director & Innovator</p>
-                            <p class="text-center text-sm text-slate-600 mt-4 px-4 italic">
+                            <h4 class="font-display font-bold text-brand-navy text-base md:text-xl">Amit Sharma</h4>
+                            <p class="text-brand-accent text-[10px] sm:text-xs md:text-sm font-semibold uppercase tracking-wider">Managing Director & Innovator</p>
+                            <p class="text-center text-xs sm:text-sm text-slate-600 mt-2 md:mt-4 italic px-2">
                                 "Our mission is simple: to make medical skin-safe adhesives reliable, scalable, and indigenously accessible."
                             </p>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Founder Profile</div>
                         <div>Madheads Hair Chemical Pvt Ltd</div>
                     </div>
                 </div>
 
-                <!-- Slide 4: Strategic Vision & Mission -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Core Directives</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Core Directives</span>
                         <div class="flex items-center space-x-4">
                             <button onclick="goToSlide(1)" class="text-xs font-bold text-brand-navy hover:text-brand-accent transition flex items-center space-x-1">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span>Back to Index</span>
+                                <span class="hidden sm:inline">Index</span>
                             </button>
                             <span class="text-xs text-slate-500">04 / 10</span>
                         </div>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Vision Box -->
-                        <div class="p-8 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col justify-between hover:border-brand-accent/25 hover:shadow-md transition">
-                            <div class="space-y-4">
-                                <div class="w-14 h-14 rounded-xl bg-brand-accent/10 flex items-center justify-center">
-                                    <i class="fa-solid fa-eye text-brand-accent text-2xl"></i>
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 py-2">
+                        <div class="p-4 md:p-8 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col justify-between hover:border-brand-accent/25 hover:shadow-md transition">
+                            <div class="space-y-2 md:space-y-4">
+                                <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-brand-accent/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-eye text-brand-accent text-xl md:text-2xl"></i>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-2xl">Our Vision</h4>
-                                <p class="text-slate-700 text-base md:text-lg leading-relaxed">
+                                <h4 class="font-display font-bold text-lg md:text-2xl text-brand-navy">Our Vision</h4>
+                                <p class="text-slate-700 text-xs sm:text-base md:text-lg leading-relaxed">
                                     To establish India as a global self-sufficient leader in bio-adhesive and scalp-care engineering through environmentally friendly, scientifically rigorous product lines designed for critical local climates.
                                 </p>
                             </div>
-                            <div class="text-brand-accent text-xs font-semibold tracking-widest uppercase mt-6">Future Blueprint &rarr;</div>
                         </div>
 
-                        <!-- Mission Box -->
-                        <div class="p-8 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col justify-between hover:border-brand-accent/25 hover:shadow-md transition">
-                            <div class="space-y-4">
-                                <div class="w-14 h-14 rounded-xl bg-brand-accent/10 flex items-center justify-center">
-                                    <i class="fa-solid fa-bullseye text-brand-accent text-2xl"></i>
+                        <div class="p-4 md:p-8 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col justify-between hover:border-brand-accent/25 hover:shadow-md transition">
+                            <div class="space-y-2 md:space-y-4">
+                                <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-brand-accent/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-bullseye text-brand-accent text-xl md:text-2xl"></i>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-2xl">Our Mission</h4>
-                                <ul class="space-y-3 text-slate-700 text-base md:text-lg">
-                                    <li class="flex items-center space-x-3">
-                                        <i class="fa-solid fa-circle-check text-brand-accent text-sm"></i>
+                                <h4 class="font-display font-bold text-lg md:text-2xl text-brand-navy">Our Mission</h4>
+                                <ul class="space-y-1.5 md:space-y-3 text-slate-700 text-xs sm:text-base md:text-lg">
+                                    <li class="flex items-center space-x-2 md:space-x-3">
+                                        <i class="fa-solid fa-circle-check text-brand-accent text-xs md:text-sm"></i>
                                         <span>Produce fully certified domestic medical-grade scalp bonding.</span>
                                     </li>
-                                    <li class="flex items-center space-x-3">
-                                        <i class="fa-solid fa-circle-check text-brand-accent text-sm"></i>
+                                    <li class="flex items-center space-x-2 thieves md:space-x-3">
+                                        <i class="fa-solid fa-circle-check text-brand-accent text-xs md:text-sm"></i>
                                         <span>Replace expensive import pathways for direct cost benefits.</span>
                                     </li>
-                                    <li class="flex items-center space-x-3">
-                                        <i class="fa-solid fa-circle-check text-brand-accent text-sm"></i>
-                                        <span>Bridge the commercial cosmetics sector with medical-grade biotech.</span>
+                                    <li class="flex items-center space-x-2 md:space-x-3">
+                                        <i class="fa-solid fa-circle-check text-brand-accent text-xs md:text-sm"></i>
+                                        <span>Bridge commercial cosmetics with medical-grade biotech.</span>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="text-brand-accent text-xs font-semibold tracking-widest uppercase mt-6">Action Blueprint &rarr;</div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Directives</div>
                         <div>Strategic Pillars</div>
                     </div>
                 </div>
 
-                <!-- Slide 5: The Critical Problem (Interactive Comparison Slider) -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Market Friction</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Market Friction</span>
                         <div class="flex items-center space-x-4">
                             <button onclick="goToSlide(1)" class="text-xs font-bold text-brand-navy hover:text-brand-accent transition flex items-center space-x-1">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span>Back to Index</span>
+                                <span class="hidden sm:inline">Index</span>
                             </button>
                             <span class="text-xs text-slate-500">05 / 10</span>
                         </div>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-                        <div class="md:col-span-5 space-y-4">
-                            <div class="text-red-500 font-bold text-sm tracking-widest uppercase">Key Hurdles</div>
-                            <h3 class="font-display font-bold text-4xl text-brand-navy">Critical Industry Friction</h3>
-                            <p class="text-slate-700 text-base md:text-lg leading-relaxed">
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 items-center py-2">
+                        <div class="md:col-span-5 space-y-2">
+                            <div class="text-red-500 font-bold text-xs md:text-sm tracking-widest uppercase">Key Hurdles</div>
+                            <h3 class="font-display font-bold text-xl sm:text-3xl md:text-4xl text-brand-navy">Critical Industry Friction</h3>
+                            <p class="text-slate-700 text-xs sm:text-base md:text-lg leading-relaxed">
                                 Professional hair salons, clinics, and medical institutions face heavy structural hurdles with current foreign offerings. 
-                            </p>
-                            <p class="text-slate-500 text-xs italic">
-                                Click the interactive tabs to explore how import reliance impact operations.
                             </p>
                         </div>
                         
-                        <!-- Interactive Problem Switcher -->
-                        <div class="md:col-span-7 bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm">
-                            <!-- Toggle Header -->
-                            <div class="flex space-x-2 mb-6 border-b border-slate-200 pb-4">
-                                <button onclick="switchProblemTab('climate')" id="btn-tab-climate" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider rounded-lg bg-brand-accent text-brand-navy hover:bg-brand-accentHover transition">
+                        <div class="md:col-span-7 bg-slate-50 p-4 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                            <div class="flex flex-wrap gap-2 mb-6 border-b border-slate-200 pb-4">
+                                <button onclick="switchProblemTab('climate')" id="btn-tab-climate" class="flex-1 min-w-[80px] py-3 text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-lg bg-brand-accent text-brand-navy transition">
                                     Climate Mismatch
                                 </button>
-                                <button onclick="switchProblemTab('imports')" id="btn-tab-imports" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider text-slate-600 bg-white border border-slate-200 hover:bg-slate-100 rounded-lg transition">
+                                <button onclick="switchProblemTab('imports')" id="btn-tab-imports" class="flex-1 min-w-[80px] py-3 text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-600 bg-white border border-slate-200 hover:bg-slate-100 rounded-lg transition">
                                     Cost Barriers
                                 </button>
-                                <button onclick="switchProblemTab('quality')" id="btn-tab-quality" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider text-slate-600 bg-white border border-slate-200 hover:bg-slate-100 rounded-lg transition">
+                                <button onclick="switchProblemTab('quality')" id="btn-tab-quality" class="flex-1 min-w-[80px] py-3 text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-600 bg-white border border-slate-200 hover:bg-slate-100 rounded-lg transition">
                                     Quality Gaps
                                 </button>
                             </div>
-                            <!-- Tab Contents -->
-                            <div id="content-tab-climate" class="space-y-4">
-                                <h4 class="font-display font-semibold text-brand-navy text-xl flex items-center space-x-2">
+                            <div id="content-tab-climate" class="space-y-2 text-xs sm:text-sm md:text-base">
+                                <h4 class="font-display font-semibold text-brand-navy text-sm sm:text-lg md:text-xl flex items-center space-x-2">
                                     <i class="fa-solid fa-cloud-showers-water text-brand-accent"></i>
                                     <span>Extreme Weather Meltdown</span>
                                 </h4>
-                                <p class="text-slate-700 text-base leading-relaxed">
+                                <p class="text-slate-700 leading-relaxed">
                                     Most global premium hair bonding products are formulated for Western, non-humid conditions. In India's high temperature and intense humidity, foreign bonds lose performance rapidly, melting to sticky chemical residues on patient scalps.
                                 </p>
                             </div>
-                            <div id="content-tab-imports" class="hidden space-y-4">
-                                <h4 class="font-display font-semibold text-brand-navy text-xl flex items-center space-x-2">
+                            <div id="content-tab-imports" class="hidden space-y-2 text-xs sm:text-sm md:text-base">
+                                <h4 class="font-display font-semibold text-brand-navy text-sm sm:text-lg md:text-xl flex items-center space-x-2">
                                     <i class="fa-solid fa-truck-ramp-box text-red-500"></i>
                                     <span>Exorbitant Cost Structure</span>
                                 </h4>
-                                <p class="text-slate-700 text-base leading-relaxed">
+                                <p class="text-slate-700 leading-relaxed">
                                     Imported hair glues suffer from severe transport, custom, and distributor markup costs, causing prices to swell over 300%. Salons and clinics are forced to operate on slim margins while charging end-users premium rates.
                                 </p>
                             </div>
-                            <div id="content-tab-quality" class="hidden space-y-4">
-                                <h4 class="font-display font-semibold text-brand-navy text-xl flex items-center space-x-2">
+                            <div id="content-tab-quality" class="hidden space-y-2 text-xs sm:text-sm md:text-base">
+                                <h4 class="font-display font-semibold text-brand-navy text-sm sm:text-lg md:text-xl flex items-center space-x-2">
                                     <i class="fa-solid fa-triangle-exclamation text-yellow-600"></i>
                                     <span>Skin Damage & Unregulated Sourcing</span>
                                 </h4>
-                                <p class="text-slate-700 text-base leading-relaxed">
+                                <p class="text-slate-700 leading-relaxed">
                                     Uncertified counterfeit or low-grade adhesive alternatives flooded into India can cause serious chemical burns, skin scaling, dermatitis, and long-term hair follicle destruction. Domestic certified options are virtually non-existent.
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Problem Breakdown</div>
                         <div>Interactive Friction Engine</div>
                     </div>
                 </div>
 
-                <!-- Slide 6: Market Opportunity (Interactive Calculator Component) -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">CAGR Modeler</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">CAGR Modeler</span>
                         <div class="flex items-center space-x-4">
                             <button onclick="goToSlide(1)" class="text-xs font-bold text-brand-navy hover:text-brand-accent transition flex items-center space-x-1">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span>Back to Index</span>
+                                <span class="hidden sm:inline">Index</span>
                             </button>
                             <span class="text-xs text-slate-500">06 / 10</span>
                         </div>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 items-center py-2">
                         
-                        <!-- Left Controls: Inputs & Modeler Details -->
-                        <div class="md:col-span-5 space-y-6">
-                            <h3 class="font-display font-bold text-3xl text-brand-navy">Interactive Market Projection</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">
+                        <div class="md:col-span-5 space-y-3">
+                            <h3 class="font-display font-bold text-xl sm:text-3xl md:text-3xl text-brand-navy">Interactive Market Projection</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
                                 Global and local adhesive demand is hitting record highs. Use our simulator below to calculate potential market valuation over years.
                             </p>
                             
-                            <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200 text-sm shadow-sm">
+                            <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm">
                                 <div>
-                                    <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Select Market Segment</label>
-                                    <select id="marketSegment" onchange="recalculateMarket()" class="w-full bg-white border border-slate-200 rounded-lg py-2.5 px-3 text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-accent text-xs">
+                                    <label class="block text-[10px] md:text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">Select Market Segment</label>
+                                    <select id="marketSegment" onchange="recalculateMarket()" class="w-full bg-white border border-slate-200 rounded-lg py-2.5 px-3 text-slate-700 focus:outline-none text-xs">
                                         <option value="global-medical" data-base="8.65" data-cagr="9.8">Global Medical Grade Adhesives ($8.65B, 9.8% CAGR)</option>
                                         <option value="india-tapes" data-base="0.77" data-cagr="10.1">India Adhesive Tapes ($0.77B, 10.1% CAGR)</option>
                                         <option value="india-transdermal" data-base="2.1" data-cagr="7.5">India Transdermal Patches ($2.1B, 7.5% CAGR)</option>
                                         <option value="india-adhesives" data-base="2.4" data-cagr="8.9">General Indian Adhesives ($2.4B, 8.9% CAGR)</option>
                                     </select>
                                 </div>
-                                <div class="grid grid-cols-2 gap-4">
+                                <div class="grid grid-cols-2 gap-2">
                                     <div>
-                                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">Target Year</label>
-                                        <input type="number" id="marketTargetYear" min="2024" max="2035" value="2032" oninput="recalculateMarket()" class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-accent text-xs">
+                                        <label class="block text-[10px] md:text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">Target Year</label>
+                                        <input type="number" id="marketTargetYear" min="2024" max="2035" value="2032" oninput="recalculateMarket()" class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 text-xs">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">Adjusted CAGR (%)</label>
-                                        <input type="number" id="marketCAGR" step="0.1" value="9.8" oninput="recalculateMarket()" class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-accent text-xs">
+                                        <label class="block text-[10px] md:text-xs font-semibold text-slate-600 tracking-wider mb-1">Adjusted CAGR (%)</label>
+                                        <input type="number" id="marketCAGR" step="0.1" value="9.8" oninput="recalculateMarket()" class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 text-xs">
                                     </div>
                                 </div>
-                                <div class="pt-3 border-t border-slate-200">
-                                    <span class="text-xs text-brand-textMuted">Projected Valuation:</span>
-                                    <span class="block text-2xl font-bold text-brand-accent" id="projectedValueLabel">$16.56 Billion</span>
+                                <div class="pt-2 border-t border-slate-200">
+                                    <span class="text-[10px] md:text-xs text-brand-textMuted">Projected Valuation:</span>
+                                    <span class="block text-xl md:text-2xl font-bold text-brand-accent" id="projectedValueLabel">$16.56 Billion</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Right Controls: Dynamic Visual Chart Canvas -->
-                        <div class="md:col-span-7 bg-slate-50 p-6 rounded-2xl border border-slate-200 h-72 md:h-[420px] flex flex-col justify-center shadow-sm">
+                        <div class="md:col-span-7 bg-slate-50 p-4 md:p-6 rounded-2xl border border-slate-200 h-52 md:h-[420px] flex flex-col justify-center shadow-sm">
                             <canvas id="marketChart" class="w-full h-full"></canvas>
                         </div>
 
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Market Potentials</div>
                         <div>Interactive Charting</div>
                     </div>
                 </div>
 
-                <!-- Slide 7: R&D Driven Solution & Science -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Biotech Innovation</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Biotech Innovation</span>
                         <div class="flex items-center space-x-4">
                             <button onclick="goToSlide(1)" class="text-xs font-bold text-brand-navy hover:text-brand-accent transition flex items-center space-x-1">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span>Back to Index</span>
+                                <span class="hidden sm:inline">Index</span>
                             </button>
                             <span class="text-xs text-slate-500">07 / 10</span>
                         </div>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                        <div class="space-y-4">
-                            <div class="text-brand-accent font-bold text-sm tracking-widest uppercase">Science & Safety</div>
-                            <h3 class="font-display font-bold text-4xl text-brand-navy">India's First Certified Adhesive Product System</h3>
-                            <p class="text-slate-700 text-base md:text-lg leading-relaxed">
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center py-2">
+                        <div class="space-y-2 md:space-y-4">
+                            <div class="text-brand-accent font-bold text-xs md:text-sm tracking-widest uppercase">Science & Safety</div>
+                            <h3 class="font-display font-bold text-xl sm:text-3xl md:text-4xl text-brand-navy">India's First Certified Adhesive Product System</h3>
+                            <p class="text-slate-700 text-xs sm:text-base md:text-lg leading-relaxed">
                                 Our in-house research laboratory is preparing a collection of safe-bonding polymers explicitly engineered to handle high temperatures and natural perspiration.
                             </p>
-                            <ul class="space-y-3 text-slate-700 text-base">
-                                <li class="flex items-center space-x-3">
-                                    <i class="fa-solid fa-flask-vial text-brand-accent text-lg"></i>
+                            <ul class="space-y-1 md:space-y-3 text-slate-700 text-xs sm:text-base hidden sm:block">
+                                <li class="flex items-center space-x-2 md:space-x-3">
+                                    <i class="fa-solid fa-flask-vial text-brand-accent text-base md:text-lg"></i>
                                     <span>Zero Formaldehyde, zero-volatile organic compound (VOC) synthesis.</span>
                                 </li>
-                                <li class="flex items-center space-x-3">
-                                    <i class="fa-solid fa-shield-virus text-brand-accent text-lg"></i>
+                                <li class="flex items-center space-x-2 md:space-x-3">
+                                    <i class="fa-solid fa-shield-virus text-brand-accent text-base md:text-lg"></i>
                                     <span>Bio-tested and non-allergenic on sensitive scalps.</span>
-                                </li>
-                                <li class="flex items-center space-x-3">
-                                    <i class="fa-solid fa-wind text-brand-accent text-lg"></i>
-                                    <span>Breathable structure for moisture management.</span>
                                 </li>
                             </ul>
                         </div>
                         
-                        <!-- Interactive Product Cards Grid -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-sm transition text-center cursor-pointer group" onclick="highlightTechSpec('poly')">
-                                <div class="w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition duration-300">
-                                    <i class="fa-solid fa-dna text-brand-accent text-xl"></i>
+                        <div class="grid grid-cols-2 gap-3 md:gap-4 text-center">
+                            <div class="p-4 md:p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-sm transition cursor-pointer group" onclick="highlightTechSpec('poly')">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-dna text-brand-accent text-sm md:text-xl"></i>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-base mb-1">Acrylic Polymers</h4>
-                                <span class="text-xs text-brand-textMuted">Tear & sweat resistant</span>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-base mb-1">Acrylic Polymers</h4>
+                                <span class="hidden md:block text-xs text-brand-textMuted">Tear & sweat resistant</span>
                             </div>
-                            <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-sm transition text-center cursor-pointer group" onclick="highlightTechSpec('hydro')">
-                                <div class="w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition duration-300">
-                                    <i class="fa-solid fa-droplet text-brand-accent text-xl"></i>
+                            <div class="p-4 md:p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-sm transition cursor-pointer group" onclick="highlightTechSpec('hydro')">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-droplet text-brand-accent text-sm md:text-xl"></i>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-base mb-1">Hydrocolloid Bonds</h4>
-                                <span class="text-xs text-brand-textMuted">Dermatologically active</span>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-base mb-1">Hydrocolloid Bonds</h4>
+                                <span class="hidden md:block text-xs text-brand-textMuted">Dermatologically active</span>
                             </div>
-                            <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-sm transition text-center cursor-pointer group" onclick="highlightTechSpec('sil')">
-                                <div class="w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition duration-300">
-                                    <i class="fa-solid fa-layer-group text-brand-accent text-xl"></i>
+                            <div class="p-4 md:p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-sm transition cursor-pointer group" onclick="highlightTechSpec('sil')">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-layer-group text-brand-accent text-sm md:text-xl"></i>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-base mb-1">Silicone Liners</h4>
-                                <span class="text-xs text-brand-textMuted">Easy residue release</span>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-base mb-1">Silicone Liners</h4>
+                                <span class="hidden md:block text-xs text-brand-textMuted">Easy residue release</span>
                             </div>
-                            <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-sm transition text-center cursor-pointer group" onclick="highlightTechSpec('solv')">
-                                <div class="w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition duration-300">
-                                    <i class="fa-solid fa-spray-can text-brand-accent text-xl"></i>
+                            <div class="p-4 md:p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-brand-accent/30 hover:shadow-sm transition cursor-pointer group" onclick="highlightTechSpec('solv')">
+                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-accent/10 flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition duration-300">
+                                    <i class="fa-solid fa-spray-can text-brand-accent text-sm md:text-xl"></i>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-base mb-1">Eco-Solvents</h4>
-                                <span class="text-xs text-brand-textMuted">Pure, clean dissolution</span>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-base mb-1">Eco-Solvents</h4>
+                                <span class="hidden md:block text-xs text-brand-textMuted">Pure, clean dissolution</span>
                             </div>
                         </div>
 
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Bio-Chemical Formulation</div>
-                        <div>Click card for active tech specs</div>
+                        <div>Tap card for active tech specs</div>
                     </div>
                 </div>
 
-                <!-- Slide 8: Business Model Ecosystem -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Operations</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Operations</span>
                         <div class="flex items-center space-x-4">
                             <button onclick="goToSlide(1)" class="text-xs font-bold text-brand-navy hover:text-brand-accent transition flex items-center space-x-1">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span>Back to Index</span>
+                                <span class="hidden sm:inline">Index</span>
                             </button>
                             <span class="text-xs text-slate-500">08 / 10</span>
                         </div>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto space-y-4">
-                        <h3 class="font-display font-bold text-4xl text-brand-navy mb-2">Sustainable Business & Distribution Engine</h3>
-                        <p class="text-slate-600 text-lg mb-8 max-w-xl">We target highly lucrative pipelines across local and cross-border beauty & pharmaceutical supply corridors.</p>
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto space-y-2 md:space-y-4 py-2">
+                        <h3 class="font-display font-bold text-xl sm:text-3xl md:text-4xl text-brand-navy">Sustainable Business & Distribution Engine</h3>
+                        <p class="text-slate-600 text-xs sm:text-base md:text-lg max-w-xl">We target highly lucrative pipelines across local and cross-border beauty & pharmaceutical supply corridors.</p>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                            <!-- B2B Direct -->
-                            <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/30 transition group">
-                                <div class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-3">01. Enterprise B2B</div>
-                                <h4 class="font-display font-semibold text-brand-navy text-lg mb-2">Salons & Clinics</h4>
-                                <p class="text-xs text-slate-700 leading-relaxed font-sans">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+                            <div class="p-4 md:p-6 bg-slate-50 border border-slate-200 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/30 transition">
+                                <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase mb-2">01. Enterprise B2B</div>
+                                <h4 class="font-display font-semibold text-brand-navy text-sm md:text-lg mb-1 md:mb-2">Salons & Clinics</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-relaxed font-sans">
                                     Direct integration with hair systems hubs, transplant centers, and clinics replacing foreign stock.
                                 </p>
                             </div>
-                            <!-- Direct consumer -->
-                            <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/30 transition group">
-                                <div class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-3">02. Direct B2C</div>
-                                <h4 class="font-display font-semibold text-brand-navy text-lg mb-2">D2C Platforms</h4>
-                                <p class="text-xs text-slate-700 leading-relaxed font-sans">
+                            <div class="p-4 md:p-6 bg-slate-50 border border-slate-200 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/30 transition">
+                                <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase mb-2">02. Direct B2C</div>
+                                <h4 class="font-display font-semibold text-brand-navy text-sm md:text-lg mb-1 md:mb-2">D2C Platforms</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-relaxed font-sans">
                                     Direct consumer outreach through ecommerce channels offering specialized, safe home care bonding.
                                 </p>
                             </div>
-                            <!-- Exports -->
-                            <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/30 transition group">
-                                <div class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-3">03. Global Export</div>
-                                <h4 class="font-display font-semibold text-brand-navy text-lg mb-2">Cross-Border Hubs</h4>
-                                <p class="text-xs text-slate-700 leading-relaxed font-sans">
+                            <div class="p-4 md:p-6 bg-slate-50 border border-slate-200 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/30 transition">
+                                <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase mb-2">03. Global Export</div>
+                                <h4 class="font-display font-semibold text-brand-navy text-sm md:text-lg mb-1 md:mb-2">Cross-Border Hubs</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-relaxed font-sans">
                                     Leveraging India’s high volume manufacturing margins to capture cost-sensitive markets.
                                 </p>
                             </div>
-                            <!-- Private label -->
-                            <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/30 transition group">
-                                <div class="text-brand-accent text-xs font-bold uppercase tracking-wider mb-3">04. Private Label</div>
-                                <h4 class="font-display font-semibold text-brand-navy text-lg mb-2">OEM Manufacturing</h4>
-                                <p class="text-xs text-slate-700 leading-relaxed font-sans">
+                            <div class="p-4 md:p-6 bg-slate-50 border border-slate-200 rounded-xl hover:bg-brand-accent/5 hover:border-brand-accent/30 transition">
+                                <div class="text-brand-accent text-[10px] md:text-xs font-bold uppercase mb-2">04. Private Label</div>
+                                <h4 class="font-display font-semibold text-brand-navy text-sm md:text-lg mb-1 md:mb-2">OEM Manufacturing</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-relaxed font-sans">
                                     White labeling contract manufacturing setups for emerging scalp-care and pharmaceutical conglomerates.
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Business Verticals</div>
                         <div>Distribution Ecosystem</div>
                     </div>
                 </div>
 
-                <!-- Slide 9: Milestones & Strategic Timeline -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Chronology</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Chronology</span>
                         <div class="flex items-center space-x-4">
                             <button onclick="goToSlide(1)" class="text-xs font-bold text-brand-navy hover:text-brand-accent transition flex items-center space-x-1">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span>Back to Index</span>
+                                <span class="hidden sm:inline">Index</span>
                             </button>
                             <span class="text-xs text-slate-500">09 / 10</span>
                         </div>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto">
-                        <h3 class="font-display font-bold text-4xl text-brand-navy mb-2">Company Milestones & Roadmap</h3>
-                        <p class="text-slate-600 text-sm mb-6 max-w-xl">Tracking our rapid developmental trajectory from official registration to active trials and funding sourcing.</p>
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto py-2">
+                        <h3 class="font-display font-bold text-xl sm:text-3xl text-brand-navy mb-1">Company Milestones & Roadmap</h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mb-4 max-w-xl hidden sm:block">Tracking our rapid developmental trajectory from official registration to active trials and funding sourcing.</p>
                         
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                            <!-- Sep 2025 -->
-                            <div class="relative z-10 bg-slate-50 p-5 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('sep2025')">
-                                <div class="flex items-center space-x-3 mb-2">
-                                    <div class="w-10 h-10 rounded-full bg-brand-accent text-white font-bold flex items-center justify-center text-sm group-hover:scale-105 transition shadow-md shadow-brand-accent/25">
-                                        S
-                                    </div>
-                                    <span class="text-brand-accent font-bold text-sm">Sep 2025</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('sep2025')">
+                                <div class="flex items-center space-x-3 mb-1 md:mb-2">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-accent text-white font-bold flex items-center justify-center text-xs md:text-sm shadow-md">S</div>
+                                    <span class="text-brand-accent font-bold text-xs md:text-sm">Sep 2025</span>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-sm mb-1 uppercase tracking-wide">Company Registration</h4>
-                                <p class="text-xs text-slate-700 leading-normal">
-                                    Incorporated Madheads Hair Chemical Pvt Ltd.
-                                </p>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-sm mb-0.5 uppercase tracking-wide">Company Registration</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-normal hidden sm:block">Incorporated Madheads Hair Chemical Pvt Ltd.</p>
                             </div>
                             
-                            <!-- Oct 2025 -->
-                            <div class="relative z-10 bg-slate-50 p-5 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('oct2025')">
-                                <div class="flex items-center space-x-3 mb-2">
-                                    <div class="w-10 h-10 rounded-full bg-white text-brand-accent font-bold flex items-center justify-center text-sm border border-brand-accent/20 group-hover:scale-105 transition">
-                                        O
-                                    </div>
-                                    <span class="text-brand-accent font-bold text-sm">Oct 2025</span>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('oct2025')">
+                                <div class="flex items-center space-x-3 mb-1 md:mb-2">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white text-brand-accent font-bold flex items-center justify-center text-xs md:text-sm border border-brand-accent/20">O</div>
+                                    <span class="text-brand-accent font-bold text-xs md:text-sm">Oct 2025</span>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-sm mb-1 uppercase tracking-wide">SRIIR Partnership</h4>
-                                <p class="text-xs text-slate-700 leading-normal">
-                                    Partnered with Shriram Institute for Industrial Research.
-                                </p>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-sm mb-0.5 uppercase tracking-wide">SRIIR Partnership</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-normal hidden sm:block">Partnered with Shriram Institute for Industrial Research.</p>
                             </div>
 
-                            <!-- Dec 2025 -->
-                            <div class="relative z-10 bg-slate-50 p-5 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('dec2025')">
-                                <div class="flex items-center space-x-3 mb-2">
-                                    <div class="w-10 h-10 rounded-full bg-white text-brand-accent font-bold flex items-center justify-center text-sm border border-brand-accent/20 group-hover:scale-105 transition">
-                                        D
-                                    </div>
-                                    <span class="text-brand-accent font-bold text-sm">Dec 2025</span>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('dec2025')">
+                                <div class="flex items-center space-x-3 mb-1 md:mb-2">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white text-brand-accent font-bold flex items-center justify-center text-xs md:text-sm border border-brand-accent/20">D</div>
+                                    <span class="text-brand-accent font-bold text-xs md:text-sm">Dec 2025</span>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-sm mb-1 uppercase tracking-wide">DPIIT Certified</h4>
-                                <p class="text-xs text-slate-700 leading-normal">
-                                    Received official DPIIT startup certification.
-                                </p>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-sm mb-0.5 uppercase tracking-wide">DPIIT Certified</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-normal hidden sm:block">Received official DPIIT startup certification.</p>
                             </div>
 
-                            <!-- Feb 2026 -->
-                            <div class="relative z-10 bg-slate-50 p-5 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('feb2026')">
-                                <div class="flex items-center space-x-3 mb-2">
-                                    <div class="w-10 h-10 rounded-full bg-white text-brand-accent font-bold flex items-center justify-center text-sm border border-brand-accent/20 group-hover:scale-105 transition">
-                                        F
-                                    </div>
-                                    <span class="text-brand-accent font-bold text-sm">Feb 2026</span>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('feb2026')">
+                                <div class="flex items-center space-x-3 mb-1 md:mb-2">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white text-brand-accent font-bold flex items-center justify-center text-xs md:text-sm border border-brand-accent/20">F</div>
+                                    <span class="text-brand-accent font-bold text-xs md:text-sm">Feb 2026</span>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-sm mb-1 uppercase tracking-wide">1st Glue Trials</h4>
-                                <p class="text-xs text-slate-700 leading-normal">
-                                    First glue sample testing at Madheads Hair Studio.
-                                </p>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-sm mb-0.5 uppercase tracking-wide">1st Glue Trials</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-normal hidden sm:block">First glue testing executed at Madheads Studio.</p>
                             </div>
 
-                            <!-- Apr 2026 -->
-                            <div class="relative z-10 bg-slate-50 p-5 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('apr2026')">
-                                <div class="flex items-center space-x-3 mb-2">
-                                    <div class="w-10 h-10 rounded-full bg-white text-brand-accent font-bold flex items-center justify-center text-sm border border-brand-accent/20 group-hover:scale-105 transition">
-                                        A
-                                    </div>
-                                    <span class="text-brand-accent font-bold text-sm">Apr 2026</span>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-brand-accent/30 hover:shadow-sm transition group cursor-pointer" onclick="viewMilestone('apr2026')">
+                                <div class="flex items-center space-x-3 mb-1 md:mb-2">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white text-brand-accent font-bold flex items-center justify-center text-xs md:text-sm border border-brand-accent/20">A</div>
+                                    <span class="text-brand-accent font-bold text-xs md:text-sm">Apr 2026</span>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-sm mb-1 uppercase tracking-wide">4th Sample Upgrades</h4>
-                                <p class="text-xs text-slate-700 leading-normal">
-                                    Upgraded 4th sample undergoes active testing.
-                                </p>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-sm mb-0.5 uppercase tracking-wide">4th Sample Upgrades</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-normal hidden sm:block">Upgraded 4th sample undergoes active testing.</p>
                             </div>
 
-                            <!-- May 2026 -->
-                            <div class="relative z-10 bg-brand-accent/10 p-5 rounded-xl border border-brand-accent/30 hover:border-brand-accent/50 hover:shadow-md transition group cursor-pointer" onclick="viewMilestone('may2026')">
-                                <div class="flex items-center space-x-3 mb-2">
-                                    <div class="w-10 h-10 rounded-full bg-brand-accent text-white font-bold flex items-center justify-center text-sm group-hover:scale-105 transition shadow-md shadow-brand-accent/25 animate-pulse">
-                                        M
-                                    </div>
-                                    <span class="text-brand-accent font-bold text-sm">May 2026</span>
+                            <div class="bg-brand-accent/10 p-4 rounded-xl border border-brand-accent/30 hover:border-brand-accent/50 hover:shadow-md transition group cursor-pointer animate-pulse" onclick="viewMilestone('may2026')">
+                                <div class="flex items-center space-x-3 mb-1 md:mb-2">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-accent text-white font-bold flex items-center justify-center text-xs md:text-sm shadow-md shadow-brand-accent/25">M</div>
+                                    <span class="text-brand-accent font-bold text-xs md:text-sm">May 2026</span>
                                 </div>
-                                <h4 class="font-display font-bold text-brand-navy text-sm mb-1 uppercase tracking-wide">Capital Expansion</h4>
-                                <p class="text-xs text-slate-700 leading-normal">
-                                    Actively seeking Govt & Private grant funding.
-                                </p>
+                                <h4 class="font-display font-bold text-brand-navy text-xs md:text-sm mb-0.5 uppercase tracking-wide">Capital Expansion</h4>
+                                <p class="text-[11px] md:text-xs text-slate-700 leading-normal hidden sm:block">Actively seeking Govt & Private funding support.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Corporate Roadmap</div>
-                        <div>Click milestones for details</div>
+                        <div>Tap milestones for details</div>
                     </div>
                 </div>
 
-                <!-- Slide 10: Contact Portal & Document Request -->
-                <div class="slide absolute inset-0 p-6 md:p-10 flex flex-col justify-between opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Contact Desk</span>
+                <div class="slide absolute inset-0 p-5 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-hidden opacity-0 pointer-events-none z-0 transition-all duration-700 transform translate-x-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-brand-accent font-semibold px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/25">Contact Desk</span>
                         <div class="flex items-center space-x-4">
                             <button onclick="goToSlide(1)" class="text-xs font-bold text-brand-navy hover:text-brand-accent transition flex items-center space-x-1">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span>Back to Index</span>
+                                <span class="hidden sm:inline">Index</span>
                             </button>
                             <span class="text-xs text-slate-500">10 / 10</span>
                         </div>
                     </div>
-                    <div class="my-auto max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+                    <div class="my-auto max-w-[95%] md:max-w-[85%] mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 items-center py-2">
                         
-                        <div class="md:col-span-5 space-y-6">
-                            <h3 class="font-display font-extrabold text-4xl text-brand-navy">Let's Connect</h3>
-                            <p class="text-slate-700 text-base leading-relaxed">
+                        <div class="md:col-span-5 space-y-2 md:space-y-6">
+                            <h3 class="font-display font-extrabold text-2xl md:text-4xl text-brand-navy">Let's Connect</h3>
+                            <p class="text-slate-700 text-xs md:text-base leading-relaxed">
                                 Interested in investing, licensing our patent-ready formulas, or requesting safety sheets? Reach out to our scientific desk.
                             </p>
                             
-                            <div class="space-y-3 text-base text-slate-700">
-                                <div class="flex items-center space-x-3">
+                            <div class="space-y-1.5 md:space-y-3 text-xs md:text-base text-slate-700 hidden sm:block">
+                                <div class="flex items-center space-x-2 md:space-x-3">
                                     <i class="fa-solid fa-map-location-dot text-brand-accent"></i>
                                     <span>Greater Noida, Uttar Pradesh, India</span>
                                 </div>
-                                <div class="flex items-center space-x-3">
+                                <div class="flex items-center space-x-2 md:space-x-3">
                                     <i class="fa-solid fa-envelope text-brand-accent"></i>
                                     <a href="mailto:madheadschemical@gmail.com" class="hover:underline text-brand-accent">madheadschemical@gmail.com</a>
                                 </div>
-                                <div class="flex items-center space-x-3">
+                                <div class="flex items-center space-x-2 md:space-x-3">
                                     <i class="fa-solid fa-phone text-brand-accent"></i>
-                                    <span>+91 88009 08884 / +91 97798 64684</span>
+                                    <span>+91 88009 08884</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Inquiry Form -->
-                        <div class="md:col-span-7">
-                            <form id="contactForm" onsubmit="handleInquirySubmit(event)" class="space-y-4 bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm">
-                                <div class="grid grid-cols-2 gap-4">
+                        <div class="md:col-span-7 w-full">
+                            <form id="contactForm" onsubmit="handleInquirySubmit(event)" class="space-y-3 bg-slate-50 p-4 md:p-8 rounded-2xl border border-slate-200 shadow-sm text-xs">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <div>
-                                        <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Your Name</label>
-                                        <input type="text" id="contactName" required class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-accent">
+                                        <label class="block text-[10px] md:text-xs font-semibold text-slate-500 uppercase mb-1">Your Name</label>
+                                        <input type="text" id="contactName" required class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Company / Clinic</label>
-                                        <input type="text" id="contactOrg" class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-accent">
+                                        <label class="block text-[10px] md:text-xs font-semibold text-slate-500 uppercase mb-1">Company / Clinic</label>
+                                        <input type="text" id="contactOrg" class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none">
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Email / Contact Number</label>
-                                    <input type="email" id="contactEmail" required class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-accent">
+                                    <label class="block text-[10px] md:text-xs font-semibold text-slate-500 uppercase mb-1">Email / Contact Number</label>
+                                    <input type="email" id="contactEmail" required class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">I am interested in</label>
-                                    <select id="contactTopic" class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-accent">
+                                    <label class="block text-[10px] md:text-xs font-semibold text-slate-500 uppercase mb-1">I am interested in</label>
+                                    <select id="contactTopic" class="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-700 focus:outline-none">
                                         <option value="Licensing / Patents">Licensing / Patent-Ready Formulae</option>
                                         <option value="Distribution Partnership">Distribution Partnership</option>
                                         <option value="Clinical Sample Request">Clinical Adhesive Samples</option>
                                         <option value="Investment / Capital Support">Investment Opportunity</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="w-full py-3 bg-brand-navy hover:bg-slate-900 text-white font-bold rounded-lg shadow-md transition flex items-center justify-center space-x-2">
+                                <button type="submit" class="w-full py-3 bg-brand-navy hover:bg-slate-900 text-white font-bold rounded-lg shadow-md transition flex items-center justify-center space-x-2 text-xs md:text-sm">
                                     <i class="fa-regular fa-paper-plane"></i>
-                                    <span>Send Inquire Message</span>
+                                    <span>Send Inquiry Message</span>
                                 </button>
                             </form>
                         </div>
 
                     </div>
-                    <div class="flex justify-between items-center text-xs text-brand-textMuted border-t border-slate-100 pt-4">
+                    <div class="flex justify-between items-center text-[10px] sm:text-xs text-brand-textMuted border-t border-slate-100 pt-4 mt-2">
                         <div>Partnership Desk</div>
                         <div>Madheads Hair Chemical Pvt Ltd</div>
                     </div>
@@ -880,70 +769,56 @@
 
             </div>
 
-            <!-- Slide Nav Controller (Prev / Progress Dots / Next) -->
-            <div class="absolute -bottom-14 left-0 right-0 flex justify-between items-center px-4 dot-nav-wrapper">
-                <button onclick="changeSlide(-1)" class="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 flex items-center justify-center text-brand-navy transition hover:text-brand-accent shadow-sm" title="Previous Slide">
+            <div class="absolute -bottom-14 left-0 right-0 flex justify-between items-center px-2 dot-nav-wrapper">
+                <button onclick="changeSlide(-1)" class="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 flex items-center justify-center text-brand-navy transition hover:text-brand-accent shadow-sm">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
                 
-                <!-- Progress Indicators -->
-                <div class="flex space-x-2">
-                    <button onclick="goToSlide(0)" class="dot w-3 h-3 rounded-full bg-brand-accent transition-all duration-300" title="Slide 1"></button>
-                    <button onclick="goToSlide(1)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 2"></button>
-                    <button onclick="goToSlide(2)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 3"></button>
-                    <button onclick="goToSlide(3)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 4"></button>
-                    <button onclick="goToSlide(4)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 5"></button>
-                    <button onclick="goToSlide(5)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 6"></button>
-                    <button onclick="goToSlide(6)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 7"></button>
-                    <button onclick="goToSlide(7)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 8"></button>
-                    <button onclick="goToSlide(8)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 9"></button>
-                    <button onclick="goToSlide(9)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" title="Slide 10"></button>
+                <div class="flex space-x-1.5 max-w-[65%] overflow-x-auto py-1 px-2">
+                    <button onclick="goToSlide(0)" class="dot w-6 h-3 rounded-full bg-brand-accent transition-all duration-300 flex-shrink-0" title="Slide 1"></button>
+                    <button onclick="goToSlide(1)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 2"></button>
+                    <button onclick="goToSlide(2)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 3"></button>
+                    <button onclick="goToSlide(3)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 4"></button>
+                    <button onclick="goToSlide(4)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 5"></button>
+                    <button onclick="goToSlide(5)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 6"></button>
+                    <button onclick="goToSlide(6)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 7"></button>
+                    <button onclick="goToSlide(7)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 8"></button>
+                    <button onclick="goToSlide(8)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 9"></button>
+                    <button onclick="goToSlide(9)" class="dot w-3 h-3 rounded-full bg-slate-300 transition-all duration-300 flex-shrink-0" title="Slide 10"></button>
                 </div>
 
-                <button onclick="changeSlide(1)" class="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 flex items-center justify-center text-brand-navy transition hover:text-brand-accent shadow-sm" title="Next Slide">
+                <button onclick="changeSlide(1)" class="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 flex items-center justify-center text-brand-navy transition hover:text-brand-accent shadow-sm">
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
             </div>
 
-            <!-- Global Technical Specs Reveal Modal (Inside Fullscreen container to preserve viewing layout) -->
             <div id="techSpecModal" class="absolute inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm hidden">
-                <div class="bg-white border border-slate-200 p-6 md:p-8 rounded-2xl max-w-md w-full relative space-y-4 shadow-xl">
+                <div class="bg-white border border-slate-200 p-6 md:p-8 rounded-2xl max-w-md w-full relative space-y-4 shadow-xl text-xs md:text-sm">
                     <button onclick="closeTechSpec()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-900 text-xl">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                     <div class="w-12 h-12 bg-brand-accent/10 rounded-xl flex items-center justify-center text-brand-accent text-2xl" id="modalIcon">
                         <i class="fa-solid fa-flask"></i>
                     </div>
-                    <h3 class="font-display font-bold text-brand-navy text-xl" id="modalTitle">Acrylic Specification</h3>
-                    <p class="text-slate-700 text-sm leading-relaxed" id="modalDesc">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto aut magnam eveniet.
-                    </p>
+                    <h3 class="font-display font-bold text-brand-navy text-lg md:text-xl" id="modalTitle">Acrylic Specification</h3>
+                    <p class="text-slate-700 leading-relaxed" id="modalDesc"></p>
                     <button onclick="closeTechSpec()" class="w-full py-2 bg-brand-accent hover:bg-brand-accentHover text-white font-bold rounded-lg text-xs transition">
                         Close Technical Specs
                     </button>
                 </div>
             </div>
 
-            <!-- Quick Tour Guide Modal -->
             <div id="tourModal" class="absolute inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm hidden">
-                <div class="bg-white border border-slate-200 p-6 rounded-2xl max-w-sm w-full relative text-center space-y-4 shadow-xl">
+                <div class="bg-white border border-slate-200 p-6 rounded-2xl max-w-sm w-full relative text-center space-y-4 shadow-xl text-xs sm:text-sm">
                     <h3 class="font-display font-bold text-brand-navy text-lg">Interactive Controls Guide</h3>
-                    <div class="space-y-3 text-left text-sm text-slate-700 py-2 border-y border-slate-100">
-                        <div class="flex items-center space-x-3">
-                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-brand-accent font-mono font-bold">Left Arrow</span>
-                            <span>Go to Previous Slide</span>
+                    <div class="space-y-3 text-left py-2 border-y border-slate-100">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-brand-navy">Keyboard Run:</span>
+                            <span>Left / Right Arrow Keys</span>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-brand-accent font-mono font-bold">Right Arrow</span>
-                            <span>Go to Next Slide</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-brand-accent font-mono font-bold">Swipe</span>
-                            <span>Supports Left/Right touch gestures</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-brand-accent font-mono font-bold">Dual-Mode</span>
-                            <span>Switch view to standard scroll layout</span>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-brand-navy">Gestures Loop:</span>
+                            <span>Supports touch swipe patterns</span>
                         </div>
                     </div>
                     <button onclick="toggleQuickTour()" class="w-full py-2 bg-brand-accent hover:bg-brand-accentHover text-white font-bold rounded-lg text-xs transition">
@@ -955,13 +830,11 @@
         </div>
     </main>
 
-    <!-- Dashboard Mode View Mode (Continuous Scroll with interactive components) -->
     <main id="dashboardContainer" class="hidden max-w-7xl mx-auto px-6 pt-32 pb-24 z-10 space-y-24 transition-opacity duration-300">
         
-        <!-- Welcome Hero Banner -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
-                <span class="px-4 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-xs font-bold uppercase tracking-wider">
+                <span class="px-4 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-xs font-bold uppercase tracking-wider inline-block">
                     Enterprise Dashboard Overview
                 </span>
                 <h2 class="font-display font-extrabold text-4xl md:text-5xl text-brand-navy tracking-tight leading-tight">
@@ -980,10 +853,8 @@
                 </div>
             </div>
             <div class="bg-white p-8 rounded-3xl border border-slate-200 flex items-center justify-center relative shadow-sm">
-                <!-- Decorative Graphic Area -->
-                <div class="absolute inset-0 bg-brand-accent/5 rounded-3xl blur-md pointer-events-none flex"></div>
                 <div class="text-center relative z-10 py-6">
-                    <div class="w-20 h-20 bg-brand-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-brand-accent/20 animate-bounce">
+                    <div class="w-20 h-20 bg-brand-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-brand-accent/20">
                         <i class="fa-solid fa-microscope text-brand-accent text-3xl"></i>
                     </div>
                     <h3 class="font-display font-bold text-brand-navy text-lg mb-1">R&D Lab Ready</h3>
@@ -992,7 +863,6 @@
             </div>
         </section>
 
-        <!-- Problem VS Solution Comparative Section -->
         <section class="space-y-8">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="text-brand-accent text-xs font-semibold uppercase tracking-widest">Bridging Industry Gaps</span>
@@ -1001,7 +871,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Friction Card 1 -->
                 <div class="p-6 bg-white border border-slate-200 rounded-2xl hover:border-brand-accent/40 shadow-sm transition space-y-4">
                     <div class="flex justify-between items-start">
                         <span class="p-3 bg-red-500/10 text-red-500 rounded-xl text-lg">
@@ -1019,7 +888,6 @@
                     </div>
                 </div>
 
-                <!-- Friction Card 2 -->
                 <div class="p-6 bg-white border border-slate-200 rounded-2xl hover:border-brand-accent/40 shadow-sm transition space-y-4">
                     <div class="flex justify-between items-start">
                         <span class="p-3 bg-red-500/10 text-red-500 rounded-xl text-lg">
@@ -1037,7 +905,6 @@
                     </div>
                 </div>
 
-                <!-- Friction Card 3 -->
                 <div class="p-6 bg-white border border-slate-200 rounded-2xl hover:border-brand-accent/40 shadow-sm transition space-y-4">
                     <div class="flex justify-between items-start">
                         <span class="p-3 bg-red-500/10 text-red-500 rounded-xl text-lg">
@@ -1057,28 +924,20 @@
             </div>
         </section>
 
-        <!-- Deep Market Modeler -->
-        <section id="dashboardCalculator" class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+        <section id="dashboardCalculator" class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-xs md:text-sm">
             <div class="md:col-span-5 space-y-4">
                 <span class="text-brand-accent text-xs font-semibold uppercase tracking-wider">Live Analytics</span>
                 <h3 class="font-display font-bold text-3xl text-brand-navy">Dynamic Market Value Forecaster</h3>
-                <p class="text-sm text-slate-600 leading-relaxed">
+                <p class="text-slate-600 leading-relaxed">
                     Adjust target metrics in our reactive calculator component to see the predicted scale of global and Indian hair adhesive segments.
                 </p>
-                <div class="space-y-4 pt-4 text-xs text-slate-500 border-t border-slate-100">
-                    <div class="flex items-center space-x-2">
-                        <i class="fa-solid fa-asterisk text-brand-accent"></i>
-                        <span>Formula based on standard compound annual growth rates.</span>
-                    </div>
-                </div>
             </div>
             
-            <div class="md:col-span-7 space-y-6">
-                <!-- Embedded Duplicate Calculator for Dashboard Flow -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="md:col-span-7 space-y-6 w-full">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Category Selection</label>
-                        <select id="dbMarketSegment" onchange="syncDashboardCalculators()" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-slate-700">
+                        <label class="block font-bold text-slate-500 uppercase mb-2 text-xs">Category Selection</label>
+                        <select id="dbMarketSegment" onchange="syncDashboardCalculators()" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-slate-700 text-xs">
                             <option value="global-medical" data-base="8.65" data-cagr="9.8">Global Medical Adhesives ($8.65B Base)</option>
                             <option value="india-tapes" data-base="0.77" data-cagr="10.1">India Adhesive Tapes ($0.77B Base)</option>
                             <option value="india-transdermal" data-base="2.1" data-cagr="7.5">India Transdermal Patches ($2.1B Base)</option>
@@ -1086,10 +945,10 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Target Year & CAGR</label>
+                        <label class="block font-bold text-slate-400 uppercase mb-2 text-xs">Target Year & CAGR</label>
                         <div class="flex space-x-2">
-                            <input type="number" id="dbTargetYear" value="2032" min="2024" max="2035" oninput="syncDashboardCalculators()" class="w-1/2 bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-slate-700">
-                            <input type="number" id="dbCAGR" value="9.8" step="0.1" oninput="syncDashboardCalculators()" class="w-1/2 bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-slate-700">
+                            <input type="number" id="dbTargetYear" value="2032" min="2024" max="2035" oninput="syncDashboardCalculators()" class="w-1/2 bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-slate-700 text-xs">
+                            <input type="number" id="dbCAGR" value="9.8" step="0.1" oninput="syncDashboardCalculators()" class="w-1/2 bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-slate-700 text-xs">
                         </div>
                     </div>
                 </div>
@@ -1098,15 +957,10 @@
                         <span class="text-xs text-brand-textMuted uppercase tracking-wider block">Estimated Growth Valuation</span>
                         <span class="text-3xl font-extrabold text-brand-accent mt-1 block" id="dbProjectedValuation">$16.56 Billion</span>
                     </div>
-                    <div class="text-right">
-                        <span class="text-xs text-brand-textMuted block">Calculated from 2023 base</span>
-                        <span class="inline-block px-2 py-1 bg-brand-accent/10 text-brand-accent text-xxs font-bold uppercase rounded-md mt-1">Ready</span>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- R&D Chemistry Specifications -->
         <section id="dashboardRnd" class="space-y-8">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="text-brand-accent text-xs font-semibold uppercase tracking-widest">Technical Specifications</span>
@@ -1114,39 +968,30 @@
                 <p class="text-sm text-slate-500">Our chemical research focuses on key dermatological safety rules.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-brand-accent/30 shadow-sm transition space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-3">
                     <span class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent font-bold">1</span>
                     <h4 class="font-display font-bold text-brand-navy text-base">Sweat-pH Adaption</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Custom-tailored polymers designed not to react with typical scalp acidity levels or sebum secretions.
-                    </p>
+                    <p class="text-slate-600 text-xs leading-relaxed">Custom-tailored polymers designed not to react with typical scalp acidity levels or sebum secretions.</p>
                 </div>
-                <div class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-brand-accent/30 shadow-sm transition space-y-3">
+                <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-3">
                     <span class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent font-bold">2</span>
-                    <h4 class="font-display font-bold text-white text-base">Allergen Protection</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Complete absence of harmful raw ingredients and industrial solvents like formaldehyde and toluene.
-                    </p>
+                    <h4 class="font-display font-bold text-brand-navy text-base">Allergen Protection</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Complete absence of harmful raw ingredients and industrial solvents like formaldehyde and toluene.</p>
                 </div>
-                <div class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-brand-accent/30 shadow-sm transition space-y-3">
+                <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-3">
                     <span class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent font-bold">3</span>
-                    <h4 class="font-display font-bold text-white text-base">Porosity Control</h4>
-                    <p class="text-slate-300 text-xs leading-relaxed">
-                        Micro-gaps built into the adhesive mesh allow air and sweat vapor to exit safely, keeping skin healthy.
-                    </p>
+                    <h4 class="font-display font-bold text-brand-navy text-base">Porosity Control</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Micro-gaps built into the adhesive mesh allow air and sweat vapor to exit safely, keeping skin healthy.</p>
                 </div>
-                <div class="p-5 bg-white border border-slate-200 rounded-2xl hover:border-brand-accent/30 shadow-sm transition space-y-3">
+                <div class="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-3">
                     <span class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent font-bold">4</span>
-                    <h4 class="font-display font-bold text-white text-base">Residue-Free Clean</h4>
-                    <p class="text-slate-300 text-xs leading-relaxed">
-                        Easily released with organic eco-solvents, leaving no sticky polymers attached to delicate hair grafts.
-                    </p>
+                    <h4 class="font-display font-bold text-brand-navy text-base">Residue-Free Clean</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Easily released with organic eco-solvents, leaving no sticky polymers attached to delicate hair grafts.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Milestones Overview (UPDATED Dashboard Timeline matching user instructions) -->
         <section class="space-y-8">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="text-brand-accent text-xs font-semibold uppercase tracking-widest">Our Progress</span>
@@ -1154,46 +999,46 @@
                 <p class="text-sm text-slate-500">Where we stand today on our path to full commercial market scale.</p>
             </div>
 
-            <div class="border-l-2 border-brand-accent/30 pl-6 ml-4 space-y-8 max-w-3xl mx-auto">
+            <div class="border-l-2 border-brand-accent/30 pl-6 ml-4 space-y-8 max-w-3xl mx-auto text-xs sm:text-sm">
                 <div class="relative">
                     <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-brand-accent rounded-full"></div>
                     <h4 class="font-display font-bold text-brand-navy text-lg">September 2025 - Company Incorporation</h4>
-                    <p class="text-slate-600 text-xs mt-1 leading-relaxed font-sans">
+                    <p class="text-slate-600 mt-1 leading-relaxed font-sans">
                         Formally incorporated and registered Madheads Hair Chemical Pvt Ltd in Greater Noida, establishing legal and patent architectures for domestic medical-grade adhesives.
                     </p>
                 </div>
                 <div class="relative">
                     <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-brand-accent rounded-full"></div>
                     <h4 class="font-display font-bold text-brand-navy text-lg">October 2025 - SRIIR Partnership</h4>
-                    <p class="text-slate-600 text-xs mt-1 leading-relaxed font-sans">
+                    <p class="text-slate-600 mt-1 leading-relaxed font-sans">
                         Partnered with the Shriram Institute for Industrial Research (SRIIR) to gain deep industrial validation, specialized chemical apparatus accessibility, and strict laboratory testing protocols.
                     </p>
                 </div>
                 <div class="relative">
                     <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-brand-accent rounded-full"></div>
                     <h4 class="font-display font-bold text-brand-navy text-lg">December 2025 - DPIIT Certification</h4>
-                    <p class="text-slate-600 text-xs mt-1 leading-relaxed font-sans">
+                    <p class="text-slate-600 mt-1 leading-relaxed font-sans">
                         Received official certification from the Department for Promotion of Industry and Internal Trade (DPIIT), boosting startup benefits and government recognition.
                     </p>
                 </div>
                 <div class="relative">
                     <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-brand-accent rounded-full"></div>
                     <h4 class="font-display font-bold text-brand-navy text-lg">February 2026 - 1st Glue Sample Trials</h4>
-                    <p class="text-slate-600 text-xs mt-1 leading-relaxed font-sans">
+                    <p class="text-slate-600 mt-1 leading-relaxed font-sans">
                         Initiated the first localized adhesive glue trials on patient-simulated systems at Madheads Hair Studio to map sweat resistance, comfort profiles, and scalp adhesion hold times.
                     </p>
                 </div>
                 <div class="relative">
                     <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-brand-accent rounded-full"></div>
                     <h4 class="font-display font-bold text-brand-navy text-lg">April 2026 - Upgraded 4th Sample Testing</h4>
-                    <p class="text-slate-600 text-xs mt-1 leading-relaxed font-sans font-semibold">
+                    <p class="text-slate-600 mt-1 leading-relaxed font-sans font-semibold">
                         Refined formula parameters to introduce our 4th generation sample with improved cohesive strength, humidity resistance, and skin protection matrices, currently under rigorous real-world evaluation.
                     </p>
                 </div>
                 <div class="relative">
                     <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-brand-accent rounded-full shadow-[0_0_10px_#00d1b2]"></div>
                     <h4 class="font-display font-bold text-brand-accent text-lg">May 2026 - Funding & Capital Expansion</h4>
-                    <p class="text-slate-600 text-xs mt-1 leading-relaxed font-sans font-semibold">
+                    <p class="text-slate-600 mt-1 leading-relaxed font-sans font-semibold">
                         Actively engaged in applying for Indian Government research grants and sourcing strategic private equity partners to accelerate regulatory licensing and pilot factory setups.
                     </p>
                 </div>
@@ -1202,15 +1047,13 @@
 
     </main>
 
-    <!-- Custom Dialog / Toast System (Eliminating Native Alert blocks) -->
-    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 bg-white border border-brand-accent/35 text-slate-800 py-3.5 px-5 rounded-xl shadow-xl transition-transform duration-300 transform translate-y-24 flex items-center space-x-3">
+    <div id="toastNotification" class="fixed bottom-16 right-6 z-50 bg-white border border-brand-accent/35 text-slate-800 py-3 px-5 rounded-xl shadow-xl transition-transform duration-300 transform translate-y-32 flex items-center space-x-3 text-xs">
         <span class="w-2.5 h-2.5 bg-brand-accent rounded-full animate-ping"></span>
-        <span id="toastMessage" class="text-xs font-semibold font-sans">Message sent successfully!</span>
+        <span id="toastMessage" class="font-semibold font-sans">Action logged successfully!</span>
     </div>
 
-    <!-- Footer Area -->
-    <footer class="fixed bottom-0 left-0 right-0 z-40 bg-slate-100 border-t border-slate-200 py-3 px-6 text-center text-slate-500 text-xxs">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+    <footer class="fixed bottom-0 left-0 right-0 z-40 bg-slate-100 border-t border-slate-200 py-3 px-6 text-center text-slate-500 text-[10px]">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div>&copy; 2026 Madheads Hair Chemical Pvt Ltd. All rights reserved.</div>
             <div class="flex space-x-4">
                 <a href="#" class="hover:text-brand-accent transition">Terms of Research Use</a>
@@ -1219,79 +1062,47 @@
         </div>
     </footer>
 
-    <!-- App Logic Engine -->
     <script>
-        // Presentation State & Elements Setup
         let currentSlideIdx = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
-        let viewMode = 'presentation'; // 'presentation' or 'dashboard'
+        let viewMode = 'presentation';
 
-        // Touch event swipe tracking
         let touchStartX = 0;
         let touchEndX = 0;
 
-        // Initialize App on Window Load
         window.onload = function() {
             initMarketChart();
             setupKeyboardNavigation();
             setupTouchNavigation();
         };
 
-        // Fallback sequence for loading Amit Sharma's portrait cleanly
         function handleImageError(img) {
-            if (!img.dataset.firstRetry) {
-                // Try encoded thin space (U+202F)
-                img.dataset.firstRetry = "true";
-                img.src = "Screenshot%202026-06-04%20at%2011.25.35%E2%80%AFAM.png";
-            } else if (!img.dataset.secondRetry) {
-                // Try normal space variant
-                img.dataset.secondRetry = "true";
-                img.src = "AmitSharma.png";
-            } else if (!img.dataset.thirdRetry) {
-                // Try encoded normal space variant
-                img.dataset.thirdRetry = "true";
-                img.src = "Screenshot%202026-06-04%20at%2011.25.35%20AM.png";
-            } else {
-                // Graceful silhouette indicator fallback
-                img.style.display = 'none';
-                document.getElementById('avatarFallback').classList.remove('hidden');
-            }
+            img.style.display = 'none';
+            document.getElementById('avatarFallback').classList.remove('hidden');
         }
 
-        // Immersive Laptop-Oriented Fullscreen Activation Utility
+        // Fullscreen Utilities
         function toggleFullScreen() {
             const container = document.getElementById('slidesCanvasContainer');
             if (!document.fullscreenElement) {
                 if (container.requestFullscreen) {
-                    container.requestFullscreen().catch(err => {
-                        triggerToast("Error enabling fullscreen: " + err.message);
-                    });
-                } else if (container.webkitRequestFullscreen) { /* Safari */
+                    container.requestFullscreen().catch(err => { triggerToast("Error: " + err.message); });
+                } else if (container.webkitRequestFullscreen) {
                     container.webkitRequestFullscreen();
-                } else if (container.msRequestFullscreen) { /* IE11 */
-                    container.msRequestFullscreen();
                 }
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
+                if (document.exitFullscreen) document.exitFullscreen();
             }
         }
 
-        // Slide Deck Navigation Master
+        // Slide Navigation
         function goToSlide(idx) {
             if (idx < 0 || idx >= slides.length) return;
             
-            // Deactivate current slide
             slides[currentSlideIdx].classList.remove('opacity-100', 'z-10');
             slides[currentSlideIdx].classList.add('opacity-0', 'pointer-events-none', 'z-0');
             
-            // Move slide coordinates (slide left / slide right illusion)
             if (idx > currentSlideIdx) {
                 slides[currentSlideIdx].classList.add('-translate-x-full');
                 slides[idx].classList.remove('translate-x-full', '-translate-x-full');
@@ -1300,14 +1111,12 @@
                 slides[idx].classList.remove('translate-x-full', '-translate-x-full');
             }
 
-            // Update Progress Dot Markers
             dots[currentSlideIdx].classList.remove('bg-brand-accent', 'w-6');
             dots[currentSlideIdx].classList.add('bg-slate-300', 'w-3');
 
             dots[idx].classList.remove('bg-slate-300', 'w-3');
             dots[idx].classList.add('bg-brand-accent', 'w-6');
 
-            // Activate target slide
             slides[idx].classList.remove('opacity-0', 'pointer-events-none', 'z-0');
             slides[idx].classList.add('opacity-100', 'z-10');
 
@@ -1316,12 +1125,9 @@
 
         function changeSlide(direction) {
             let nextIndex = currentSlideIdx + direction;
-            if (nextIndex >= 0 && nextIndex < slides.length) {
-                goToSlide(nextIndex);
-            }
+            if (nextIndex >= 0 && nextIndex < slides.length) goToSlide(nextIndex);
         }
 
-        // View Mode Switcher: Slides Presentation vs Scrollable Document Dashboard
         function toggleViewMode() {
             const presContainer = document.getElementById('presentationContainer');
             const dashContainer = document.getElementById('dashboardContainer');
@@ -1345,44 +1151,26 @@
             }
         }
 
-        // Problem Slide Tab Switching
         function switchProblemTab(tabId) {
             const tabs = ['climate', 'imports', 'quality'];
             tabs.forEach(t => {
                 const btn = document.getElementById(`btn-tab-${t}`);
                 const content = document.getElementById(`content-tab-${t}`);
                 if (t === tabId) {
-                    btn.className = 'flex-1 py-3 text-xs font-bold uppercase tracking-wider rounded-lg bg-brand-accent text-brand-navy hover:bg-brand-accentHover transition';
+                    btn.className = 'flex-1 py-3 text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-lg bg-brand-accent text-brand-navy transition';
                     content.classList.remove('hidden');
                 } else {
-                    btn.className = 'flex-1 py-3 text-xs font-bold uppercase tracking-wider text-slate-600 bg-white border border-slate-200 hover:bg-slate-100 rounded-lg transition';
+                    btn.className = 'flex-1 py-3 text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-600 bg-white border border-slate-200 hover:bg-slate-100 rounded-lg transition';
                     content.classList.add('hidden');
                 }
             });
         }
 
-        // Interactive Technology Spec Modal triggers
         const specDict = {
-            poly: {
-                title: "Acrylic Crosslinking Polymers",
-                icon: "fa-solid fa-dna",
-                desc: "High-density polymers providing immense horizontal shear resistance under extreme moisture. Engineered entirely free of toxic formaldehyde solvents."
-            },
-            hydro: {
-                title: "Dermatological Hydrocolloid Bonds",
-                icon: "fa-solid fa-droplet",
-                desc: "Active hydrocolloid compounds designed to pull excess moisture and body sweat safely away from the scalp skin layer, preventing bacterial and fungal spore generation."
-            },
-            sil: {
-                title: "Medical-Grade Silicone Elastomers",
-                icon: "fa-solid fa-layer-group",
-                desc: "Elastomers offering outstanding edge flexibility. Ensures smooth movement of the prosthetic hair piece along scalp contour without painful skin pulls."
-            },
-            solv: {
-                title: "Hypoallergenic Eco-Solvents",
-                icon: "fa-solid fa-spray-can",
-                desc: "Citrus-extract based release liquids that dissolve the polymer matrix in minutes. No skin damage, pain, or trace chemical residues left behind."
-            }
+            poly: { title: "Acrylic Crosslinking Polymers", icon: "fa-solid fa-dna", desc: "High-density polymers providing immense horizontal shear resistance under extreme moisture. Engineered entirely free of toxic formaldehyde solvents." },
+            hydro: { title: "Dermatological Hydrocolloid Bonds", icon: "fa-solid fa-droplet", desc: "Active hydrocolloid compounds designed to pull excess moisture and body sweat safely away from the scalp skin layer, preventing bacterial and fungal spore generation." },
+            sil: { title: "Medical-Grade Silicone Elastomers", icon: "fa-solid fa-layer-group", desc: "Elastomers offering outstanding edge flexibility. Ensures smooth movement of the prosthetic hair piece along scalp contour without painful skin pulls." },
+            solv: { title: "Hypoallergenic Eco-Solvents", icon: "fa-solid fa-spray-can", desc: "Citrus-extract based release liquids that dissolve the polymer matrix in minutes. No skin damage, pain, or trace chemical residues left behind." }
         };
 
         function highlightTechSpec(specKey) {
@@ -1398,7 +1186,6 @@
             document.getElementById('techSpecModal').classList.add('hidden');
         }
 
-        // Timeline Milestones Spec Sheet Trigger (UPDATED matches exact Sep 2025 - May 2026 parameters)
         const milestoneDict = {
             sep2025: "Successfully registered Madheads Hair Chemical Pvt Ltd in Greater Noida. Founded the primary corporate, legal, and operational infrastructure to lead indigenous medical adhesive synthesis in India.",
             oct2025: "Secured our strategic research partnership and analytical lab development space with the Shriram Institute for Industrial Research (SRIIR).",
@@ -1417,15 +1204,12 @@
             document.getElementById('techSpecModal').classList.remove('hidden');
         }
 
-        // Real-Time Charting & Calculation Module (Powering Presentation & Dashboard)
         let chartInstance = null;
 
         function initMarketChart() {
             const ctx = document.getElementById('marketChart').getContext('2d');
-            
-            // Baseline Growth Data Array for default 2023 base (8.65) @ 9.8% CAGR
             const defaultYears = ['2023', '2025', '2027', '2029', '2031', '2032'];
-            const defaultValues = [8.65, 10.42, 12.56, 15.14, 18.25, 20.04]; // Approx calculated curve
+            const defaultValues = [8.65, 10.42, 12.56, 15.14, 18.25, 20.04];
 
             chartInstance = new Chart(ctx, {
                 type: 'bar',
@@ -1435,35 +1219,16 @@
                         label: 'Projected Valuation ($B)',
                         data: defaultValues,
                         backgroundColor: '#00b89c',
-                        hoverBackgroundColor: '#009e85',
-                        borderRadius: 6,
-                        borderWidth: 0
+                        borderRadius: 6
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            backgroundColor: '#ffffff',
-                            titleColor: '#001f3f',
-                            bodyColor: '#334155',
-                            borderColor: 'rgba(0,0,0,0.1)',
-                            borderWidth: 1
-                        }
-                    },
+                    plugins: { legend: { display: false } },
                     scales: {
-                        y: {
-                            grid: { color: 'rgba(0,0,0,0.04)' },
-                            ticks: { color: '#64748b', font: { family: 'Plus Jakarta Sans' } }
-                        },
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: '#64748b', font: { family: 'Plus Jakarta Sans' } }
-                        }
+                        y: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font: { family: 'Plus Jakarta Sans' } } },
+                        x: { grid: { display: false }, ticks: { font: { family: 'Plus Jakarta Sans' } } }
                     }
                 }
             });
@@ -1487,19 +1252,15 @@
 
             const yearsSpan = targetYear - 2023;
             const finalVal = calculateCompoundValue(baseValue, customCAGR, yearsSpan);
-
-            // Display update
             document.getElementById('projectedValueLabel').innerText = `$${finalVal.toFixed(2)} Billion`;
 
-            // Re-render chart data
             const yearsRange = [];
             const valuesRange = [];
             const stepsCount = 5;
 
             for (let i = 0; i <= stepsCount; i++) {
                 const currentYr = 2023 + Math.round((yearsSpan / stepsCount) * i);
-                const yrSpan = currentYr - 2023;
-                const calculatedVal = calculateCompoundValue(baseValue, customCAGR, yrSpan);
+                const calculatedVal = calculateCompoundValue(baseValue, customCAGR, (currentYr - 2023));
                 yearsRange.push(currentYr.toString());
                 valuesRange.push(parseFloat(calculatedVal.toFixed(2)));
             }
@@ -1508,98 +1269,59 @@
             chartInstance.data.datasets[0].data = valuesRange;
             chartInstance.update();
 
-            // Sync duplicate dashboard variables if present
             document.getElementById('dbTargetYear').value = targetYear;
             document.getElementById('dbCAGR').value = customCAGR;
             document.getElementById('dbMarketSegment').value = selectEl.value;
             document.getElementById('dbProjectedValuation').innerText = `$${finalVal.toFixed(2)} Billion`;
         }
 
-        // Sync inputs from the scrollable dashboard segment
         function syncDashboardCalculators() {
-            const dbSelect = document.getElementById('dbMarketSegment');
-            const dbTargetYear = document.getElementById('dbTargetYear').value;
-            const dbCAGR = document.getElementById('dbCAGR').value;
-
-            // Push values back into presentation inputs
-            document.getElementById('marketSegment').value = dbSelect.value;
-            document.getElementById('marketTargetYear').value = dbTargetYear;
-            document.getElementById('marketCAGR').value = dbCAGR;
-
-            // Trigger official calculation engine
+            document.getElementById('marketSegment').value = document.getElementById('dbMarketSegment').value;
+            document.getElementById('marketTargetYear').value = document.getElementById('dbTargetYear').value;
+            document.getElementById('marketCAGR').value = document.getElementById('dbCAGR').value;
             recalculateMarket();
         }
 
-        // Custom styled toast alert handler
         function triggerToast(message) {
             const toast = document.getElementById('toastNotification');
-            const msgEl = document.getElementById('toastMessage');
-            msgEl.innerText = message;
-            toast.classList.remove('translate-y-24');
+            document.getElementById('toastMessage').innerText = message;
+            toast.classList.remove('translate-y-32');
             toast.classList.add('translate-y-0');
-
             setTimeout(() => {
                 toast.classList.remove('translate-y-0');
-                toast.classList.add('translate-y-24');
+                toast.classList.add('translate-y-32');
             }, 4000);
         }
 
-        // Form Submission Logic
         function handleInquirySubmit(event) {
             event.preventDefault();
-            const name = document.getElementById('contactName').value;
-            const org = document.getElementById('contactOrg').value || "Independent Clinic";
-            const topic = document.getElementById('contactTopic').value;
-
-            // Render confirmation
-            triggerToast(`Thank you, ${name} of ${org}. Your inquiry for "${topic}" has been logged!`);
+            triggerToast("Inquiry logged successfully!");
             document.getElementById('contactForm').reset();
         }
 
-        // Control Tour Modal Trigger
         function toggleQuickTour() {
-            const modal = document.getElementById('tourModal');
-            modal.classList.toggle('hidden');
+            document.getElementById('tourModal').classList.toggle('hidden');
         }
 
-        // Keyboard navigation setup
         function setupKeyboardNavigation() {
             window.addEventListener('keydown', function(event) {
                 if (viewMode === 'presentation') {
-                    if (event.key === 'ArrowRight' || event.key === ' ') {
-                        changeSlide(1);
-                    } else if (event.key === 'ArrowLeft') {
-                        changeSlide(-1);
-                    }
+                    if (event.key === 'ArrowRight' || event.key === ' ') changeSlide(1);
+                    else if (event.key === 'ArrowLeft') changeSlide(-1);
                 }
             });
         }
 
-        // Mobile touch swipe gestures
         function setupTouchNavigation() {
             const presContainer = document.getElementById('presentationContainer');
-            
-            presContainer.addEventListener('touchstart', function(event) {
-                touchStartX = event.changedTouches[0].screenX;
+            presContainer.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, false);
+            presContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                const threshold = 50;
+                if (touchStartX - touchEndX > threshold) changeSlide(1);
+                else if (touchEndX - touchStartX > threshold) changeSlide(-1);
             }, false);
-
-            presContainer.addEventListener('touchend', function(event) {
-                touchEndX = event.changedTouches[0].screenX;
-                handleSwipeGesture();
-            }, false);
-        }
-
-        function handleSwipeGesture() {
-            const threshold = 50;
-            if (touchStartX - touchEndX > threshold) {
-                // Swipe Left (Next slide)
-                changeSlide(1);
-            } else if (touchEndX - touchStartX > threshold) {
-                // Swipe Right (Previous slide)
-                changeSlide(-1);
-            }
         }
     </script>
-
 </body>
 </html>
